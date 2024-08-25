@@ -158,4 +158,23 @@ mod tests {
         let result = levenshtein_distance(&"unrelated", &"SCREAMING");
         assert_eq!(result, 9);
     }
+
+    #[test]
+    fn slightly_related_ignoring_case() {
+        let result = levenshtein_distance_ignore_ascii_case(&"unrelated", &"SCREAMING");
+        assert_eq!(result, 7);
+    }
+
+    #[test]
+    fn non_english() {
+        let result = levenshtein_distance(&"El delfín español", &"Dolphin");
+        assert_eq!(result, 15);
+    }
+
+    #[test]
+    fn graphemes() {
+        let result = levenshtein_distance(&"🧑‍🔬", &"🧑");
+        // Split scientist into just person emoji
+        assert_eq!(result, 2);
+    }
 }
