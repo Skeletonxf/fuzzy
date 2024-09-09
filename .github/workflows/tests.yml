@@ -34,5 +34,7 @@ jobs:
       run: cargo test
     - name: Run Example
       run: cargo run --example readme
+    - name: Install wasm target
+      run: rustup target add wasm32-unknown-unknown
     - name: Build for wasm
       run: cargo build --target wasm32-unknown-unknown
