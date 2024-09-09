@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "fuzzy"
-version = "0.1.0"
+name = "fuzzy-string-distance"
+version = "1.0.0"

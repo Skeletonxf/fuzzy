@@ -1,3 +1,15 @@
+//! Fuzzy string comparisons using [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
+//!
+//! Whereas simple string comparison is very sensitive to typos, Levenshtein Distance gives the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other. This gives us a sliding scale between 0 (strings are identical) and the length of the longer string (strings are unrelated), which can be used for fuzzy comparisons that can be resilient to typos, minor mistakes, and inconsistent spelling.
+//!
+//! ```
+//! use fuzzy_string_distance::levenshtein_distance;
+//! assert_eq!(1, levenshtein_distance(&"rust", &"rusty")); // insert y
+//! assert_eq!(3, levenshtein_distance(&"bug", &"")); // delete all characters
+//! assert_eq!(2, levenshtein_distance(&"typography", &"typpgrapy")); // fix both typos
+//! ```
+//!
+
 /// Returns the minimum number of single character insertions, deletions or substitutions
 /// required to convert the source string to the target string, known as the Levenshtein distance.
 ///
@@ -120,6 +132,14 @@ pub fn levenshtein_distance_ignore_ascii_case(source: &str, target: &str) -> usi
 /// string will have the minimum number of edits 0, and as a few characters need to be modified to
 /// match against part of the target the distances will increase.
 ///
+/// ```
+/// use fuzzy_string_distance::local_levenshtein_distance;
+/// // trivial match to substring
+/// assert_eq!(0, local_levenshtein_distance(&"long", &"A long sentence"));
+/// // local distance is asymmetric, here we have to insert almost all the search term
+/// assert_eq!(11, local_levenshtein_distance(&"A long sentence", &"long"));
+/// ```
+///
 /// See also:
 /// - [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
 /// - [Fuzzy Substring Matching: On-device Fuzzy Friend Search at Snapchat](http://arxiv.org/pdf/2211.02767)
@@ -225,6 +245,14 @@ pub fn local_levenshtein_distance(source: &str, target: &str) -> usize {
 /// with a longer target string, short searches that match exactly against part of the target
 /// string will have the minimum number of edits 0, and as a few characters need to be modified to
 /// match against part of the target the distances will increase.
+///
+/// ```
+/// use fuzzy_string_distance::local_levenshtein_distance_ignore_ascii_case;
+/// // trivial match to substring
+/// assert_eq!(0, local_levenshtein_distance_ignore_ascii_case(&"LONG", &"A long sentence"));
+/// // local distance is asymmetric, here we have to insert almost all the search term
+/// assert_eq!(11, local_levenshtein_distance_ignore_ascii_case(&"A long sentence", &"LONG"));
+/// ```
 ///
 /// See also:
 /// - [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
