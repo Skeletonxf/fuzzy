@@ -2,7 +2,11 @@
 name = "fuzzy-string-distance"
 version = "1.0.0"
 edition = "2021"
+authors = ["Skeletonxf <skeletonxf@gmail.com>"]
+repository = "https://github.com/Skeletonxf/fuzzy"
+license = "MIT OR Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+# Just the std lib
