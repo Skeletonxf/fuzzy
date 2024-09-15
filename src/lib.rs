@@ -136,7 +136,7 @@ pub fn levenshtein_distance_ignore_ascii_case(source: &str, target: &str) -> usi
 /// use fuzzy_string_distance::local_levenshtein_distance;
 /// // trivial match to substring
 /// assert_eq!(0, local_levenshtein_distance(&"long", &"A long sentence"));
-/// // local distance is asymmetric, here we have to insert almost all the search term
+/// // local distance is asymmetric, here we have to delete almost all the search term
 /// assert_eq!(11, local_levenshtein_distance(&"A long sentence", &"long"));
 /// ```
 ///
@@ -250,7 +250,7 @@ pub fn local_levenshtein_distance(source: &str, target: &str) -> usize {
 /// use fuzzy_string_distance::local_levenshtein_distance_ignore_ascii_case;
 /// // trivial match to substring
 /// assert_eq!(0, local_levenshtein_distance_ignore_ascii_case(&"LONG", &"A long sentence"));
-/// // local distance is asymmetric, here we have to insert almost all the search term
+/// // local distance is asymmetric, here we have to delete almost all the search term
 /// assert_eq!(11, local_levenshtein_distance_ignore_ascii_case(&"A long sentence", &"LONG"));
 /// ```
 ///
