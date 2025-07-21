@@ -1,7 +1,7 @@
 [package]
 name = "fuzzy-string-distance"
 version = "1.0.0"
-edition = "2021"
+edition = "2024"
 authors = ["Skeletonxf <skeletonxf@gmail.com>"]
 repository = "https://github.com/Skeletonxf/fuzzy"
 description = "Fuzzy string distance comparisons"

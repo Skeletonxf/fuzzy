@@ -89,9 +89,8 @@ pub fn levenshtein_distance(source: &str, target: &str) -> usize {
 
             // We always pick the cheapest option from the 3 we could do, which populates
             // A[i + 1, j + 1]
-            new_edit_distances[j + 1] = std::cmp::min(
-                deletion, std::cmp::min(insertion, substitution)
-            );
+            new_edit_distances[j + 1] =
+                std::cmp::min(deletion, std::cmp::min(insertion, substitution));
         }
 
         edit_distances = new_edit_distances;
@@ -216,9 +215,8 @@ pub fn local_levenshtein_distance(source: &str, target: &str) -> usize {
 
             // We always pick the cheapest option from the 3 we could do, which populates
             // A[i + 1, j + 1]
-            new_edit_distances[j + 1] = std::cmp::min(
-                deletion, std::cmp::min(insertion, substitution)
-            );
+            new_edit_distances[j + 1] =
+                std::cmp::min(deletion, std::cmp::min(insertion, substitution));
         }
 
         edit_distances = new_edit_distances;
